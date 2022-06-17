@@ -1,0 +1,83 @@
+<app-admin></app-admin>
+<!-- CONTENT -->
+<section id="content">
+    <nav>
+
+    </nav>
+
+
+    <!-- MAIN -->
+    <main>
+
+
+
+        <!-- CONTENT -->
+        <div class="head-title">
+            <div class="left">
+                <h1>Employees</h1>
+                <ul class="breadcrumb">
+
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="table-data">
+            <div class="order">
+                <div class="head">
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+
+                            <th>Name</th>
+                            <th>Tiltle Job</th>
+                            <th>Email</th>
+                            <th>Salary</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let e of employees | paginate:{ itemsPerPage:5, currentPage:page, totalItems: totalLength }">
+
+                            <td>{{e.name}}</td>
+                            <td>{{e.jobTitle}}</td>
+                            <td>{{e.email}}</td>
+                            <td>{{e.salary}}</td>
+                            <td>
+                                <div class="action">
+                                    <a (click)="updateEmployee(e.id)" class="text-success mr-4" data-toggle="tooltip"
+                                        data-placement="top" title="" data-original-title="Edit">
+                                        <i class="fa fa-pencil h5 m-0" style="padding-right: 20px;"></i></a>
+                                        <a  class="text-danger" data-toggle="tooltip" data-placement="top" title="Delete Employee" data-original-title="Close" mwlConfirmationPopover mwlConfirmationPopover [popoverTitle]="popoverTitle"[popoverMessage]="popoverMessage" placement="top"(confirm)="deleteEmployee(e.id)"(cancel)="goToListEmployee()">
+                                            <i class="fa fa-remove h5 m-0"></i></a>
+                                </div>
+                            </td>
+
+
+                        </tr>
+
+                    </tbody>
+                </table>
+                <table >
+                   
+               
+                    <th>
+                        <button type="button" class="btn btn-primary" routerLink="/addEmployee">Add Employee</button>
+               
+                    </th>
+                   
+                    <th>
+                        <pagination-controls (pageChange)="page=$event"></pagination-controls>
+                    </th>
+                </table>
+                
+              
+            </div>
+
+        </div>
+
+    </main>
+    <!-- MAIN -->
+</section>
